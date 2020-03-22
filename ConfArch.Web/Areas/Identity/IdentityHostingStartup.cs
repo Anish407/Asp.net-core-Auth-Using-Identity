@@ -31,8 +31,8 @@ namespace ConfArch.Web.Areas.Identity
                 services.AddAuthentication()
                 .AddGoogle(options =>
                 {
-                    options.ClientId = "960311372373-26r5vu9ejl4lm4hcb3tcht85r68kdsdq.apps.googleusercontent.com";
-                    options.ClientSecret = "uR5DvcKxpQ-7jOVszQP7zJIM";
+                    options.ClientId = "xxx";
+                    options.ClientSecret = "xx";
                 });
             });
         }
