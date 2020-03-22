@@ -9,5 +9,8 @@ namespace ConfArch.Web.Areas.Identity.Data
     // Add profile data for application users by adding properties to the ConfArchWebUser class
     public class ConfArchWebUser : IdentityUser
     {
+        public DateTime CareerStartDate { get; set; }
+
+        public string FullName { get; set; }
     }
 }

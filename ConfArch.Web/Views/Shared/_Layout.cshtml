@@ -14,13 +14,17 @@
         <div class="col-md-2">
             <img src="~/img/ConfArchSmall.png" style="max-width:100%" />
         </div>
-        <div class="col-md-9 titlecol">
-            <span class="title">@ViewBag.Title</span>           
+        <div class="col-md-8 titlecol">
+            <span class="title">@ViewBag.Title</span>
+        </div>
+        <div class="col-md-8 titlecol">
+           <partial name="_LoginPartial.cshtml"/>
         </div>
     </div>
         <div>
             @RenderBody()
         </div>
     </div>
+    @RenderSection("scripts", false);
 </body>
 </html>

@@ -1,4 +1,5 @@
 ﻿using System;
+using ConfArch.Web.Areas.Identity.Claims;
 using ConfArch.Web.Areas.Identity.Data;
 using ConfArch.Web.Data;
 using Microsoft.AspNetCore.Hosting;
@@ -20,8 +21,19 @@ namespace ConfArch.Web.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("ConfArchWebContextConnection")));
 
-                services.AddDefaultIdentity<ConfArchWebUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ConfArchWebContext>();
+                services.AddIdentity<ConfArchWebUser,IdentityRole>(options => { options.SignIn.RequireConfirmedAccount = true; })
+                    .AddEntityFrameworkStores<ConfArchWebContext>()
+                    .AddDefaultUI()
+                    .AddDefaultTokenProviders();
+
+                services.AddScoped<IUserClaimsPrincipalFactory<ConfArchWebUser>, AppNewUserCLaims>();
+
+                services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "960311372373-26r5vu9ejl4lm4hcb3tcht85r68kdsdq.apps.googleusercontent.com";
+                    options.ClientSecret = "uR5DvcKxpQ-7jOVszQP7zJIM";
+                });
             });
         }
     }
